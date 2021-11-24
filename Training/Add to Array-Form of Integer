@@ -1,0 +1,10 @@
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        A[-1] += k
+        for i in range (len(A) -1,-1,-1):
+            carry,A[i] = divmod(A[i],10)
+            if i:A[i-1] +=carry
+        while carry:
+            A = [carry%10] + A
+            carry// = 10
+            return A        

@@ -1,0 +1,32 @@
+class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        if(len(deck)<2): #given condition x>=2
+            return False
+        deck.sort()
+        clist=[]
+        count=0
+        i=count
+        while(i<len(deck)):
+            icount=0
+            for j in range(i, len(deck)):
+                if(deck[i]==deck[j]):
+                    icount+=1
+            count+=icount
+            i=count
+            clist.append(icount)
+        flag=0
+        m=min(clist)
+        if(m<2):
+            return False
+        x=2
+        while(x<=m):
+            for i in range(len(clist)):
+                if(clist[i]%x==0):
+                    flag=1
+                else:
+                    flag=0
+                    break
+            if(flag==1):
+                return True
+            x+=1
+        return False
